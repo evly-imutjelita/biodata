@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duo Biodata Sahabat • Evina & Ilmy | SMKN 1 Banyusari</title>
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0e0e13',
+              surface: '#161622',
+              card: 'rgba(25, 25, 36, 0.72)',
+              border: 'rgba(196, 181, 253, 0.15)',
+              borderHover: 'rgba(196, 181, 253, 0.45)',
+              purple: '#b892ff',
+              softPurple: '#c4b5fd',
+              lightPurple: '#ede9fe',
+              lavender: '#8b5cf6',
+              grey: {
+                50: '#f9fafb',
+                100: '#f3f4f6',
+                300: '#d1d5db',
+                400: '#9ca3af',
+                500: '#6b7280',
+                700: '#374151',
+                800: '#1f2937',
+                900: '#111827',
+              }
+            }
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-dark text-slate-100 font-body min-h-screen overflow-x-hidden selection:bg-brand-purple/30 selection:text-white relative">
+
+  <!-- Interactive Particle Background Canvas -->
+  <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Glowing Orbs Background -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="relative z-10 max-w-5xl mx-auto px-4 py-8 sm:py-14">
+
+    <!-- HERO HEADER: DUO PROFILE SHOWCASE -->
+    <header class="text-center mb-12 sm:mb-16 animate-fade-in" data-reveal>
+      
+      <!-- Top Tag -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-purple/10 border border-brand-purple/25 text-brand-softPurple text-xs font-semibold mb-6">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-purple animate-spin-slow"></i>
+        <span>Profil Persahabatan • SMKN 1 Banyusari</span>
+      </div>
+
+      <!-- Dual Connected Avatar Circles -->
+      <div class="relative flex items-center justify-center gap-4 sm:gap-8 mb-6">
+        
+        <!-- Avatar Evina (Left) -->
+        <div class="relative group cursor-pointer tilt-card photo-editable-wrapper" onclick="triggerUpload('evina')" title="Klik untuk ganti foto Evina">
+          <div class="absolute -inset-1 bg-gradient-to-r from-brand-lavender to-brand-purple rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500"></div>
+          <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-brand-softPurple/50 p-1 bg-brand-surface/80 backdrop-blur-md shadow-xl">
+            <img 
+              id="avatarEvina"
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" 
+              alt="Foto Evina Novita Sari" 
+              class="w-full h-full object-cover rounded-full group-hover:scale-105 transition duration-500"
+            >
+            <!-- Hover Edit Overlay -->
+            <div class="photo-edit-overlay">
+              <i data-lucide="camera" class="w-6 h-6 text-white animate-bounce"></i>
+              <span class="text-[11px] sm:text-xs">Ganti Foto</span>
+            </div>
+          </div>
+          <!-- Camera Badge -->
+          <div class="photo-badge-camera" title="Ganti Foto">
+            <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="block mt-2 text-xs sm:text-sm font-heading font-bold text-slate-200 group-hover:text-brand-softPurple transition-colors">
+            Evina 📷
+          </span>
+        </div>
+
+        <!-- Friendship Link Center Badge -->
+        <div class="relative flex flex-col items-center justify-center z-10">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-surface/90 border border-brand-purple/40 shadow-lg flex items-center justify-center text-brand-purple animate-pulse-slow">
+            <i data-lucide="heart" class="w-5 h-5 fill-brand-purple text-brand-purple"></i>
+          </div>
+          <span class="text-[10px] font-semibold text-slate-400 mt-1 uppercase tracking-wider">Besties</span>
+        </div>
+
+        <!-- Avatar Ilmy (Right) -->
+        <div class="relative group cursor-pointer tilt-card photo-editable-wrapper" onclick="triggerUpload('ilmy')" title="Klik untuk ganti foto Ilmy">
+          <div class="absolute -inset-1 bg-gradient-to-r from-brand-purple to-slate-500 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500"></div>
+          <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-brand-softPurple/50 p-1 bg-brand-surface/80 backdrop-blur-md shadow-xl">
+            <img 
+              id="avatarIlmy"
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" 
+              alt="Foto Ilmy Hamidah" 
+              class="w-full h-full object-cover rounded-full group-hover:scale-105 transition duration-500"
+            >
+            <!-- Hover Edit Overlay -->
+            <div class="photo-edit-overlay">
+              <i data-lucide="camera" class="w-6 h-6 text-white animate-bounce"></i>
+              <span class="text-[11px] sm:text-xs">Ganti Foto</span>
+            </div>
+          </div>
+          <!-- Camera Badge -->
+          <div class="photo-badge-camera" title="Ganti Foto">
+            <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="block mt-2 text-xs sm:text-sm font-heading font-bold text-slate-200 group-hover:text-brand-softPurple transition-colors">
+            Ilmy 📷
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Headline Title -->
+      <h1 class="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight mb-2 text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-brand-softPurple">
+        Evina & Ilmy
+      </h1>
+
+      <!-- Typing Effect Subtitle -->
+      <div class="h-8 flex items-center justify-center">
+        <span class="text-brand-purple font-medium text-base sm:text-lg tracking-wide flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-4 h-4 text-brand-purple"></i>
+          <span id="typingText"></span>
+          <span class="cursor-blink">|</span>
+        </span>
+      </div>
+
+      <!-- Quick Mutual Info Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 text-xs sm:text-sm text-slate-300">
+        <div class="glass-pill">
+          <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-brand-softPurple"></i>
+          <span>SMKN 1 BANYUSARI</span>
+        </div>
+        <div class="glass-pill">
+          <i data-lucide="users" class="w-3.5 h-3.5 text-brand-softPurple"></i>
+          <span>Dua Sahabat Sejati</span>
+        </div>
+        <div class="glass-pill">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-softPurple"></i>
+          <span>Banyusari, Indonesia</span>
+        </div>
+      </div>
+
+    </header>
+
+    <!-- SECTION: TWO PROFILES SIDE-BY-SIDE (BERDAMPINGAN) -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
+      
+      <!-- ================= KARTU ORANG 1: EVINA ================= -->
+      <div id="profile-evina" class="glass-card p-6 sm:p-8 tilt-card relative flex flex-col justify-between" data-reveal>
+        <div class="absolute -top-3 left-6 bg-gradient-to-r from-brand-lavender to-brand-purple text-white text-[11px] font-bold px-3 py-0.5 rounded-full shadow-md uppercase tracking-wider">
+          Profil 01
+        </div>
+
+        <div>
+          <!-- Header Card Profil Evina -->
+          <div class="flex items-center gap-4 mb-5 pt-2">
+            <div class="w-16 h-16 rounded-2xl overflow-hidden border border-brand-purple/30 p-0.5 bg-brand-surface flex-shrink-0 shadow-md photo-editable-wrapper group/evinaCard" onclick="triggerUpload('evina')" title="Klik untuk ganti foto Evina">
+              <img id="cardAvatarEvina" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Evina" class="w-full h-full object-cover rounded-xl group-hover/evinaCard:scale-105 transition">
+              <div class="photo-edit-overlay">
+                <i data-lucide="camera" class="w-4 h-4 text-white"></i>
+              </div>
+            </div>
+            <div>
+              <h2 class="text-xl sm:text-2xl font-heading font-bold text-white">Evina Novita Sari</h2>
+              <p class="text-xs sm:text-sm text-brand-softPurple font-medium">Panggilan: "Evina"</p>
+            </div>
+          </div>
+
+          <!-- Quick Badges Grid -->
+          <div class="grid grid-cols-2 gap-2 text-xs mb-5">
+            <div class="p-2.5 rounded-xl bg-white/[0.02] border border-brand-border">
+              <span class="text-slate-400 block text-[10px]">Tanggal Lahir / Usia</span>
+              <span class="font-semibold text-slate-200">06-11-2008 (18 Th)</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/[0.02] border border-brand-border">
+              <span class="text-slate-400 block text-[10px]">Zodiak</span>
+              <span class="font-semibold text-brand-softPurple">♏ Scorpio</span>
+            </div>
+          </div>
+
+          <!-- Tentang Evina -->
+          <div class="mb-5">
+            <h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <i data-lucide="user-check" class="w-3.5 h-3.5 text-brand-purple"></i> Tentang Evina
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Sosok yang hangat, penuh perhatian, dan selalu bisa diandalkan. Di sekolah SMKN 1 Banyusari, Evina dikenal ramah dan memiliki kreativitas tinggi, terutama saat bereksplorasi di dapur dengan racikan masakan lezat.
+            </p>
+          </div>
+
+          <!-- Hobi & Favorit -->
+          <div class="mb-5">
+            <h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="utensils" class="w-3.5 h-3.5 text-brand-purple"></i> Hobi & Hal Favorit
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-tag flex items-center gap-1">
+                <i data-lucide="soup" class="w-3.5 h-3.5"></i> Memasak
+              </span>
+              <span class="badge-tag flex items-center gap-1">
+                <i data-lucide="coffee" class="w-3.5 h-3.5"></i> Eksplorasi Resep
+              </span>
+              <span class="badge-tag flex items-center gap-1">
+                <i data-lucide="sparkle" class="w-3.5 h-3.5"></i> Kulineran
+              </span>
+            </div>
+          </div>
+
+          <!-- Pendidikan -->
+          <div class="mb-6">
+            <h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <i data-lucide="school" class="w-3.5 h-3.5 text-brand-purple"></i> Pendidikan
+            </h3>
+            <p class="text-xs text-slate-200 font-semibold bg-white/[0.02] p-2.5 rounded-xl border border-brand-border">
+              SMKN 1 BANYUSARI
+            </p>
+          </div>
+        </div>
+
+        <!-- Social Media / Hubungi Evina -->
+        <div class="pt-4 border-t border-brand-border flex items-center justify-between">
+          <span class="text-xs text-slate-400">Kontak Evina:</span>
+          <div class="flex items-center gap-2">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Evina">
+              <i data-lucide="instagram" class="w-4 h-4 text-slate-300"></i>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="TikTok Evina">
+              <i data-lucide="video" class="w-4 h-4 text-slate-300"></i>
+            </a>
+            <a href="https://wa.me/?text=Halo%20Evina!" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp Evina">
+              <i data-lucide="message-circle" class="w-4 h-4 text-slate-300"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= KARTU ORANG 2: ILMY ================= -->
+      <div id="profile-ilmy" class="glass-card p-6 sm:p-8 tilt-card relative flex flex-col justify-between" data-reveal>
+        <div class="absolute -top-3 left-6 bg-gradient-to-r from-brand-purple to-slate-500 text-white text-[11px] font-bold px-3 py-0.5 rounded-full shadow-md uppercase tracking-wider">
+          Profil 02
+        </div>
+
+        <div>
+          <!-- Header Card Profil Ilmy -->
+          <div class="flex items-center gap-4 mb-5 pt-2">
+            <div class="w-16 h-16 rounded-2xl overflow-hidden border border-brand-purple/30 p-0.5 bg-brand-surface flex-shrink-0 shadow-md photo-editable-wrapper group/ilmyCard" onclick="triggerUpload('ilmy')" title="Klik untuk ganti foto Ilmy">
+              <img id="cardAvatarIlmy" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" alt="Ilmy" class="w-full h-full object-cover rounded-xl group-hover/ilmyCard:scale-105 transition">
+              <div class="photo-edit-overlay">
+                <i data-lucide="camera" class="w-4 h-4 text-white"></i>
+              </div>
+            </div>
+            <div>
+              <h2 class="text-xl sm:text-2xl font-heading font-bold text-white">Ilmy Hamidah</h2>
+              <p class="text-xs sm:text-sm text-brand-softPurple font-medium">Panggilan: "Ilmy"</p>
+            </div>
+          </div>
+
+          <!-- Quick Badges Grid -->
+          <div class="grid grid-cols-2 gap-2 text-xs mb-5">
+            <div class="p-2.5 rounded-xl bg-white/[0.02] border border-brand-border">
+              <span class="text-slate-400 block text-[10px]">Tanggal Lahir / Usia</span>
+              <span class="font-semibold text-slate-200">05-12-2009 (16 Th)</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/[0.02] border border-brand-border">
+              <span class="text-slate-400 block text-[10px]">Zodiak</span>
+              <span class="font-semibold text-brand-softPurple">♐ Sagitarius</span>
+            </div>
+          </div>
+
+          <!-- Tentang Ilmy -->
+          <div class="mb-5">
+            <h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <i data-lucide="user-check" class="w-3.5 h-3.5 text-brand-purple"></i> Tentang Ilmy
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Pribadi yang energik, ceria, dan bersemangat. Selalu membawa suasana gembira saat bersama teman-teman di SMKN 1 Banyusari, hobi menjaga kebugaran tubuh lewat olahraga, serta partner seru saat hunting belanja bersama.
+            </p>
+          </div>
+
+          <!-- Hobi & Favorit -->
+          <div class="mb-5">
+            <h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="activity" class="w-3.5 h-3.5 text-brand-purple"></i> Hobi & Hal Favorit
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-tag flex items-center gap-1">
+                <i data-lucide="dumbbell" class="w-3.5 h-3.5"></i> Olahraga
+              </span>
+              <span class="badge-tag flex items-center gap-1">
+                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Belanja
+              </span>
+              <span class="badge-tag flex items-center gap-1">
+                <i data-lucide="smile" class="w-3.5 h-3.5"></i> Hangout
+              </span>
+            </div>
+          </div>
+
+          <!-- Pendidikan -->
+          <div class="mb-6">
+            <h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <i data-lucide="school" class="w-3.5 h-3.5 text-brand-purple"></i> Pendidikan
+            </h3>
+            <p class="text-xs text-slate-200 font-semibold bg-white/[0.02] p-2.5 rounded-xl border border-brand-border">
+              SMKN 1 BANYUSARI
+            </p>
+          </div>
+        </div>
+
+        <!-- Social Media / Hubungi Ilmy -->
+        <div class="pt-4 border-t border-brand-border flex items-center justify-between">
+          <span class="text-xs text-slate-400">Kontak Ilmy:</span>
+          <div class="flex items-center gap-2">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram Ilmy">
+              <i data-lucide="instagram" class="w-4 h-4 text-slate-300"></i>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="TikTok Ilmy">
+              <i data-lucide="video" class="w-4 h-4 text-slate-300"></i>
+            </a>
+            <a href="https://wa.me/?text=Halo%20Ilmy!" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp Ilmy">
+              <i data-lucide="message-circle" class="w-4 h-4 text-slate-300"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SECTION: FRIENDSHIP CHEMISTRY & KUTIPAN -->
+    <section class="glass-card p-6 sm:p-8 mb-12 sm:mb-16 tilt-card" data-reveal>
+      <div class="flex items-center gap-3 mb-6">
+        <div class="icon-bubble">
+          <i data-lucide="heart-handshake" class="w-5 h-5 text-brand-softPurple"></i>
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-heading font-bold text-white">Duo Chemistry & Kebersamaan</h2>
+          <p class="text-xs text-slate-400">Dua karakter berbeda yang saling melengkapi di SMKN 1 Banyusari</p>
+        </div>
+      </div>
+
+      <!-- Comparison / Complement Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        
+        <div class="p-4 rounded-2xl bg-white/[0.02] border border-brand-border text-center">
+          <span class="text-2xl mb-2 block">🍳</span>
+          <h3 class="text-sm font-bold text-white mb-1">Evina si Ahli Masak</h3>
+          <p class="text-xs text-slate-400">Suka memanjakan lidah sahabat dengan masakan buatan sendiri</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-brand-purple/10 border border-brand-purple/30 text-center flex flex-col items-center justify-center">
+          <i data-lucide="sparkles" class="w-6 h-6 text-brand-softPurple mb-1 animate-pulse"></i>
+          <h3 class="text-sm font-bold text-brand-lightPurple mb-1">Scorpio & Sagitarius</h3>
+          <p class="text-xs text-slate-300">Kombinasi setia, suportif, dan penuh tawa di setiap hari sekolah</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/[0.02] border border-brand-border text-center">
+          <span class="text-2xl mb-2 block">🛍️</span>
+          <h3 class="text-sm font-bold text-white mb-1">Ilmy si Energik & Sporty</h3>
+          <p class="text-xs text-slate-400">Selalu jadi pengajak utama untuk olahraga dan seru-seruan belanja</p>
+        </div>
+
+      </div>
+
+      <!-- Quote -->
+      <div class="p-4 sm:p-5 rounded-2xl bg-brand-surface/70 border border-brand-border text-center relative overflow-hidden">
+        <blockquote class="text-sm sm:text-base text-slate-200 italic font-light leading-relaxed">
+          "Sahabat sejati bukanlah mereka yang memiliki sifat yang persis sama, melainkan dua orang yang saling melengkapi kelebihan dan kekurangan satu sama lain dengan tulus."
+        </blockquote>
+        <span class="block mt-2 text-xs font-semibold text-brand-softPurple uppercase tracking-wider">
+          — Evina & Ilmy Forever ✨
+        </span>
+      </div>
+    </section>
+
+    <!-- SECTION: GALERI MOMEN SAHABAT (LIGHTBOX MODAL & UPLOAD) -->
+    <section class="glass-card p-6 sm:p-8 mb-12 sm:mb-16" data-reveal>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+        <div class="flex items-center gap-3">
+          <div class="icon-bubble">
+            <i data-lucide="image" class="w-5 h-5 text-brand-softPurple"></i>
+          </div>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-heading font-bold text-white">Galeri Momen Bersama</h2>
+            <p class="text-xs text-slate-400">Klik foto atau tombol kamera untuk mengganti foto langsung dari perangkat</p>
+          </div>
+        </div>
+        <div class="inline-flex items-center gap-2">
+          <button onclick="resetAllPhotos()" class="text-[11px] text-slate-400 hover:text-brand-purple flex items-center gap-1 transition px-2.5 py-1 rounded-lg bg-white/[0.03] border border-brand-border" title="Kembalikan foto awal">
+            <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+            <span>Reset Foto</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4" id="galleryGrid">
+        
+        <!-- Image 1 -->
+        <div class="gallery-item group">
+          <img id="galleryImg0" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=500&q=80" alt="Momen 1" class="gallery-img">
+          <div class="gallery-actions">
+            <button onclick="openGalleryModal(0)" class="gallery-action-btn" title="Perbesar">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Lihat</span>
+            </button>
+            <button onclick="triggerGalleryUpload(0)" class="gallery-action-btn" title="Ganti dari file">
+              <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+              <span>Ganti</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="gallery-item group">
+          <img id="galleryImg1" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=500&q=80" alt="Momen 2" class="gallery-img">
+          <div class="gallery-actions">
+            <button onclick="openGalleryModal(1)" class="gallery-action-btn" title="Perbesar">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Lihat</span>
+            </button>
+            <button onclick="triggerGalleryUpload(1)" class="gallery-action-btn" title="Ganti dari file">
+              <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+              <span>Ganti</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="gallery-item group">
+          <img id="galleryImg2" src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=500&q=80" alt="Momen 3" class="gallery-img">
+          <div class="gallery-actions">
+            <button onclick="openGalleryModal(2)" class="gallery-action-btn" title="Perbesar">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Lihat</span>
+            </button>
+            <button onclick="triggerGalleryUpload(2)" class="gallery-action-btn" title="Ganti dari file">
+              <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+              <span>Ganti</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Image 4 -->
+        <div class="gallery-item group">
+          <img id="galleryImg3" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=500&q=80" alt="Momen 4" class="gallery-img">
+          <div class="gallery-actions">
+            <button onclick="openGalleryModal(3)" class="gallery-action-btn" title="Perbesar">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Lihat</span>
+            </button>
+            <button onclick="triggerGalleryUpload(3)" class="gallery-action-btn" title="Ganti dari file">
+              <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+              <span>Ganti</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: HUBUNGI KAMI / CONNECT -->
+    <section class="glass-card p-6 sm:p-8 text-center relative overflow-hidden" data-reveal>
+      <div class="max-w-md mx-auto">
+        <div class="inline-flex p-3 rounded-2xl bg-brand-purple/10 border border-brand-purple/20 text-brand-softPurple mb-4">
+          <i data-lucide="message-square-heart" class="w-6 h-6 animate-bounce"></i>
+        </div>
+        <h2 class="text-2xl font-heading font-bold text-white mb-2">Sapa Evina & Ilmy!</h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+          Ingin kenalan lebih dekat atau menyapa kami berdua? Pilih siapa yang ingin kamu hubungi lewat WhatsApp di bawah ini.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="https://wa.me/?text=Halo%20Evina,%20salam%20kenal!" target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Chat WhatsApp Evina</span>
+          </a>
+          <a href="https://wa.me/?text=Halo%20Ilmy,%20salam%20kenal!" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Chat WhatsApp Ilmy</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-14 text-center text-xs text-slate-500 py-6 border-t border-brand-border/60">
+      <p class="flex items-center justify-center gap-1.5">
+        Duo Biodata Sahabat • Evina Novita Sari & Ilmy Hamidah
+      </p>
+      <p class="mt-1 text-[11px] text-slate-600">
+        SMKN 1 BANYUSARI • Dibalut Animasi Grey & Soft Purple • Responsif PC & Handphone
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- MODAL LIGHTBOX FOTO -->
+  <div id="photoModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+    <div class="relative max-w-2xl w-full bg-brand-surface rounded-2xl border border-brand-border overflow-hidden shadow-2xl scale-95 transition-transform duration-300" id="photoModalBox">
+      <button onclick="closePhotoModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-brand-purple transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="p-2 sm:p-3">
+        <img id="modalImage" src="" alt="Momen" class="w-full max-h-[70vh] object-contain rounded-xl">
+      </div>
+      <div class="px-6 py-4 bg-brand-dark/90 border-t border-brand-border">
+        <p id="modalCaption" class="text-sm font-medium text-slate-200 text-center"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIDDEN FILE INPUTS UNTUK GANTI FOTO LANGSUNG DARI FILE / HP / KOMPUTER -->
+  <input type="file" id="inputPhotoEvina" accept="image/*" class="hidden" onchange="handlePhotoUpload(event, 'evina')">
+  <input type="file" id="inputPhotoIlmy" accept="image/*" class="hidden" onchange="handlePhotoUpload(event, 'ilmy')">
+  <input type="file" id="inputPhotoGallery0" accept="image/*" class="hidden" onchange="handleGalleryUpload(event, 0)">
+  <input type="file" id="inputPhotoGallery1" accept="image/*" class="hidden" onchange="handleGalleryUpload(event, 1)">
+  <input type="file" id="inputPhotoGallery2" accept="image/*" class="hidden" onchange="handleGalleryUpload(event, 2)">
+  <input type="file" id="inputPhotoGallery3" accept="image/*" class="hidden" onchange="handleGalleryUpload(event, 3)">
+
+  <!-- TOAST NOTIFIKASI GANTI FOTO -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-brand-surface/95 border border-brand-purple/40 text-slate-100 px-4 py-3 rounded-xl shadow-2xl backdrop-blur-md flex items-center gap-2.5 text-xs sm:text-sm">
+      <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+      <span id="toastMessage">Foto berhasil diganti & tersimpan otomatis!</span>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
