@@ -78,27 +78,37 @@
       <div class="relative flex items-center justify-center gap-4 sm:gap-8 mb-6">
         
         <!-- Avatar Evina (Left) -->
-        <div class="relative group cursor-pointer tilt-card photo-editable-wrapper" onclick="triggerUpload('evina')" title="Klik untuk ganti foto Evina">
-          <div class="absolute -inset-1 bg-gradient-to-r from-brand-lavender to-brand-purple rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500"></div>
-          <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-brand-softPurple/50 p-1 bg-brand-surface/80 backdrop-blur-md shadow-xl">
-            <img 
-              id="avatarEvina"
-              src="./images/evina.jpg?v=2" 
-              alt="Foto Evina Novita Sari" 
-              class="w-full h-full object-cover rounded-full group-hover:scale-105 transition duration-500"
-            >
-            <!-- Hover Edit Overlay -->
-            <div class="photo-edit-overlay">
-              <i data-lucide="camera" class="w-6 h-6 text-white animate-bounce"></i>
-              <span class="text-[11px] sm:text-xs">Ganti Foto</span>
+        <div class="relative group cursor-pointer tilt-card photo-editable-wrapper" onclick="openAvatarModal('evina')" title="Klik untuk melihat atau mengganti foto Evina">
+          <div class="relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-brand-lavender to-brand-purple rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500"></div>
+            <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-brand-softPurple/50 p-1 bg-brand-surface/80 backdrop-blur-md shadow-xl">
+              <img 
+                id="avatarEvina"
+                src="./images/evina.jpg?v=2" 
+                alt="Foto Evina Novita Sari" 
+                class="w-full h-full object-cover rounded-full group-hover:scale-105 transition duration-500"
+              >
+              <!-- Hover Actions Overlay (Lihat & Ganti) -->
+              <div class="photo-edit-overlay">
+                <div class="flex flex-col sm:flex-row items-center gap-1.5">
+                  <button type="button" onclick="event.stopPropagation(); openAvatarModal('evina')" class="gallery-action-btn" title="Lihat foto">
+                    <i data-lucide="maximize-2" class="w-3 h-3"></i>
+                    <span>Lihat</span>
+                  </button>
+                  <button type="button" onclick="event.stopPropagation(); triggerUpload('evina')" class="gallery-action-btn" title="Ganti foto dari file">
+                    <i data-lucide="camera" class="w-3 h-3"></i>
+                    <span>Ganti</span>
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-          <!-- Camera Badge -->
-          <div class="photo-badge-camera" title="Ganti Foto">
-            <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+            <!-- Camera Badge -->
+            <button type="button" onclick="event.stopPropagation(); triggerUpload('evina')" class="photo-badge-camera" title="Ganti Foto Evina">
+              <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+            </button>
           </div>
           <span class="block mt-2 text-xs sm:text-sm font-heading font-bold text-slate-200 group-hover:text-brand-softPurple transition-colors">
-            Evina 📷
+            Evina
           </span>
         </div>
 
@@ -111,27 +121,37 @@
         </div>
 
         <!-- Avatar Ilmy (Right) -->
-        <div class="relative group cursor-pointer tilt-card photo-editable-wrapper" onclick="triggerUpload('ilmy')" title="Klik untuk ganti foto Ilmy">
-          <div class="absolute -inset-1 bg-gradient-to-r from-brand-purple to-slate-500 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500"></div>
-          <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-brand-softPurple/50 p-1 bg-brand-surface/80 backdrop-blur-md shadow-xl">
-            <img 
-              id="avatarIlmy"
-              src="./images/ilmy.jpg?v=2" 
-              alt="Foto Ilmy Hamidah" 
-              class="w-full h-full object-cover rounded-full group-hover:scale-105 transition duration-500"
-            >
-            <!-- Hover Edit Overlay -->
-            <div class="photo-edit-overlay">
-              <i data-lucide="camera" class="w-6 h-6 text-white animate-bounce"></i>
-              <span class="text-[11px] sm:text-xs">Ganti Foto</span>
+        <div class="relative group cursor-pointer tilt-card photo-editable-wrapper" onclick="openAvatarModal('ilmy')" title="Klik untuk melihat atau mengganti foto Ilmy">
+          <div class="relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-brand-purple to-slate-500 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500"></div>
+            <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-brand-softPurple/50 p-1 bg-brand-surface/80 backdrop-blur-md shadow-xl">
+              <img 
+                id="avatarIlmy"
+                src="./images/ilmy.jpg?v=2" 
+                alt="Foto Ilmy Hamidah" 
+                class="w-full h-full object-cover rounded-full group-hover:scale-105 transition duration-500"
+              >
+              <!-- Hover Actions Overlay (Lihat & Ganti) -->
+              <div class="photo-edit-overlay">
+                <div class="flex flex-col sm:flex-row items-center gap-1.5">
+                  <button type="button" onclick="event.stopPropagation(); openAvatarModal('ilmy')" class="gallery-action-btn" title="Lihat foto">
+                    <i data-lucide="maximize-2" class="w-3 h-3"></i>
+                    <span>Lihat</span>
+                  </button>
+                  <button type="button" onclick="event.stopPropagation(); triggerUpload('ilmy')" class="gallery-action-btn" title="Ganti foto dari file">
+                    <i data-lucide="camera" class="w-3 h-3"></i>
+                    <span>Ganti</span>
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-          <!-- Camera Badge -->
-          <div class="photo-badge-camera" title="Ganti Foto">
-            <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+            <!-- Camera Badge -->
+            <button type="button" onclick="event.stopPropagation(); triggerUpload('ilmy')" class="photo-badge-camera" title="Ganti Foto Ilmy">
+              <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+            </button>
           </div>
           <span class="block mt-2 text-xs sm:text-sm font-heading font-bold text-slate-200 group-hover:text-brand-softPurple transition-colors">
-            Ilmy 📷
+            Ilmy
           </span>
         </div>
 
@@ -181,10 +201,10 @@
         <div>
           <!-- Header Card Profil Evina -->
           <div class="flex items-center gap-4 mb-5 pt-2">
-            <div class="w-16 h-16 rounded-2xl overflow-hidden border border-brand-purple/30 p-0.5 bg-brand-surface flex-shrink-0 shadow-md photo-editable-wrapper group/evinaCard" onclick="triggerUpload('evina')" title="Klik untuk ganti foto Evina">
+            <div class="w-16 h-16 rounded-2xl overflow-hidden border border-brand-purple/30 p-0.5 bg-brand-surface flex-shrink-0 shadow-md photo-editable-wrapper group/evinaCard" onclick="openAvatarModal('evina')" title="Klik untuk melihat foto Evina">
               <img id="cardAvatarEvina" src="./images/evina.jpg?v=2" alt="Evina" class="w-full h-full object-cover rounded-xl group-hover/evinaCard:scale-105 transition">
               <div class="photo-edit-overlay">
-                <i data-lucide="camera" class="w-4 h-4 text-white"></i>
+                <i data-lucide="maximize-2" class="w-4 h-4 text-white"></i>
               </div>
             </div>
             <div>
@@ -271,10 +291,10 @@
         <div>
           <!-- Header Card Profil Ilmy -->
           <div class="flex items-center gap-4 mb-5 pt-2">
-            <div class="w-16 h-16 rounded-2xl overflow-hidden border border-brand-purple/30 p-0.5 bg-brand-surface flex-shrink-0 shadow-md photo-editable-wrapper group/ilmyCard" onclick="triggerUpload('ilmy')" title="Klik untuk ganti foto Ilmy">
+            <div class="w-16 h-16 rounded-2xl overflow-hidden border border-brand-purple/30 p-0.5 bg-brand-surface flex-shrink-0 shadow-md photo-editable-wrapper group/ilmyCard" onclick="openAvatarModal('ilmy')" title="Klik untuk melihat foto Ilmy">
               <img id="cardAvatarIlmy" src="./images/ilmy.jpg?v=2" alt="Ilmy" class="w-full h-full object-cover rounded-xl group-hover/ilmyCard:scale-105 transition">
               <div class="photo-edit-overlay">
-                <i data-lucide="camera" class="w-4 h-4 text-white"></i>
+                <i data-lucide="maximize-2" class="w-4 h-4 text-white"></i>
               </div>
             </div>
             <div>
@@ -423,14 +443,14 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4" id="galleryGrid">
         
         <!-- Image 1 -->
-        <div class="gallery-item group">
-          <img id="galleryImg0" src="./images/momen-1.jpg" alt="Mirror Selfie Bareng Sahabat" class="gallery-img">
+        <div class="gallery-item group" onclick="openGalleryModal(0)">
+          <img id="galleryImg0" src="./images/momen-1.jpg?v=2" alt="Mirror Selfie Bareng Sahabat" class="gallery-img">
           <div class="gallery-actions">
-            <button onclick="openGalleryModal(0)" class="gallery-action-btn" title="Perbesar">
+            <button type="button" onclick="event.stopPropagation(); openGalleryModal(0)" class="gallery-action-btn" title="Perbesar">
               <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
               <span>Lihat</span>
             </button>
-            <button onclick="triggerGalleryUpload(0)" class="gallery-action-btn" title="Ganti dari file">
+            <button type="button" onclick="event.stopPropagation(); triggerGalleryUpload(0)" class="gallery-action-btn" title="Ganti dari file">
               <i data-lucide="camera" class="w-3.5 h-3.5"></i>
               <span>Ganti</span>
             </button>
@@ -438,14 +458,14 @@
         </div>
 
         <!-- Image 2 -->
-        <div class="gallery-item group">
-          <img id="galleryImg1" src="./images/momen-2.jpg" alt="Momen Ulang Tahun ke-18" class="gallery-img">
+        <div class="gallery-item group" onclick="openGalleryModal(1)">
+          <img id="galleryImg1" src="./images/momen-2.jpg?v=2" alt="Momen Ulang Tahun ke-18" class="gallery-img">
           <div class="gallery-actions">
-            <button onclick="openGalleryModal(1)" class="gallery-action-btn" title="Perbesar">
+            <button type="button" onclick="event.stopPropagation(); openGalleryModal(1)" class="gallery-action-btn" title="Perbesar">
               <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
               <span>Lihat</span>
             </button>
-            <button onclick="triggerGalleryUpload(1)" class="gallery-action-btn" title="Ganti dari file">
+            <button type="button" onclick="event.stopPropagation(); triggerGalleryUpload(1)" class="gallery-action-btn" title="Ganti dari file">
               <i data-lucide="camera" class="w-3.5 h-3.5"></i>
               <span>Ganti</span>
             </button>
@@ -453,14 +473,14 @@
         </div>
 
         <!-- Image 3 -->
-        <div class="gallery-item group">
-          <img id="galleryImg2" src="./images/momen-3.jpg" alt="Ketawa Lepas & Jalan Bareng" class="gallery-img">
+        <div class="gallery-item group" onclick="openGalleryModal(2)">
+          <img id="galleryImg2" src="./images/momen-3.jpg?v=2" alt="Ketawa Lepas & Jalan Bareng" class="gallery-img">
           <div class="gallery-actions">
-            <button onclick="openGalleryModal(2)" class="gallery-action-btn" title="Perbesar">
+            <button type="button" onclick="event.stopPropagation(); openGalleryModal(2)" class="gallery-action-btn" title="Perbesar">
               <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
               <span>Lihat</span>
             </button>
-            <button onclick="triggerGalleryUpload(2)" class="gallery-action-btn" title="Ganti dari file">
+            <button type="button" onclick="event.stopPropagation(); triggerGalleryUpload(2)" class="gallery-action-btn" title="Ganti dari file">
               <i data-lucide="camera" class="w-3.5 h-3.5"></i>
               <span>Ganti</span>
             </button>
@@ -468,14 +488,14 @@
         </div>
 
         <!-- Image 4 -->
-        <div class="gallery-item group">
-          <img id="galleryImg3" src="./images/momen-4.jpg" alt="Seragam PPLG SMKN 1 Banyusari" class="gallery-img">
+        <div class="gallery-item group" onclick="openGalleryModal(3)">
+          <img id="galleryImg3" src="./images/momen-4.jpg?v=2" alt="Seragam PPLG SMKN 1 Banyusari" class="gallery-img">
           <div class="gallery-actions">
-            <button onclick="openGalleryModal(3)" class="gallery-action-btn" title="Perbesar">
+            <button type="button" onclick="event.stopPropagation(); openGalleryModal(3)" class="gallery-action-btn" title="Perbesar">
               <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
               <span>Lihat</span>
             </button>
-            <button onclick="triggerGalleryUpload(3)" class="gallery-action-btn" title="Ganti dari file">
+            <button type="button" onclick="event.stopPropagation(); triggerGalleryUpload(3)" class="gallery-action-btn" title="Ganti dari file">
               <i data-lucide="camera" class="w-3.5 h-3.5"></i>
               <span>Ganti</span>
             </button>
@@ -530,8 +550,12 @@
       <div class="p-2 sm:p-3">
         <img id="modalImage" src="" alt="Momen" class="w-full max-h-[70vh] object-contain rounded-xl">
       </div>
-      <div class="px-6 py-4 bg-brand-dark/90 border-t border-brand-border">
-        <p id="modalCaption" class="text-sm font-medium text-slate-200 text-center"></p>
+      <div class="px-6 py-4 bg-brand-dark/90 border-t border-brand-border flex items-center justify-between gap-3">
+        <p id="modalCaption" class="text-sm font-medium text-slate-200"></p>
+        <button id="modalChangePhotoBtn" type="button" class="gallery-action-btn flex-shrink-0 hidden">
+          <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+          <span>Ganti Foto</span>
+        </button>
       </div>
     </div>
   </div>
@@ -553,6 +577,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

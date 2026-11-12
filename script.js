@@ -227,8 +227,24 @@ function showToast(message) {
 }
 
 /* ========================================================
-   LIGHTBOX MODAL FOTO GALERI
+   LIGHTBOX MODAL FOTO (PROFIL & GALERI)
    ======================================================== */
+function openAvatarModal(person) {
+  const imgId = person === 'evina' ? 'avatarEvina' : 'avatarIlmy';
+  const imgEl = document.getElementById(imgId);
+  if (!imgEl) return;
+
+  const caption =
+    person === 'evina'
+      ? 'Evina Novita Sari (Evina) • SMKN 1 Banyusari'
+      : 'Ilmy Hamidah (Ilmy) • SMKN 1 Banyusari';
+
+  openPhotoModal(imgEl.src, caption, () => {
+    closePhotoModal();
+    triggerUpload(person);
+  });
+}
+
 function openGalleryModal(index) {
   const galleryImg = document.getElementById('galleryImg' + index);
   if (!galleryImg) return;
@@ -240,19 +256,33 @@ function openGalleryModal(index) {
     'Seragam PPLG SMKN 1 Banyusari 🏫'
   ];
 
-  openPhotoModal(galleryImg.src, captions[index] || 'Momen Bersama');
+  openPhotoModal(galleryImg.src, captions[index] || 'Momen Bersama', () => {
+    closePhotoModal();
+    triggerGalleryUpload(index);
+  });
 }
 
-function openPhotoModal(imgSrc, caption) {
+function openPhotoModal(imgSrc, caption, onChangeClick) {
   const modal = document.getElementById('photoModal');
   const modalBox = document.getElementById('photoModalBox');
   const modalImg = document.getElementById('modalImage');
   const modalCaption = document.getElementById('modalCaption');
+  const changeBtn = document.getElementById('modalChangePhotoBtn');
 
   if (!modal || !modalImg) return;
 
   modalImg.src = imgSrc;
   modalCaption.textContent = caption || 'Momen Bersama';
+
+  if (changeBtn) {
+    if (typeof onChangeClick === 'function') {
+      changeBtn.classList.remove('hidden');
+      changeBtn.onclick = onChangeClick;
+    } else {
+      changeBtn.classList.add('hidden');
+      changeBtn.onclick = null;
+    }
+  }
 
   modal.classList.remove('hidden');
   modal.classList.add('flex');
