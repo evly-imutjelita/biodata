@@ -10,15 +10,18 @@
  * 6. Scroll Reveal Animation
  */
 
+// Versi Foto Resmi (Otomatis membersihkan cache foto lama di browser)
+const PHOTO_VERSION = 'v2_real_photos';
+
 // URL Default Foto Asli
 const DEFAULT_PHOTOS = {
-  evina: './images/evina.jpg',
-  ilmy: './images/ilmy.jpg',
+  evina: './images/evina.jpg?v=2',
+  ilmy: './images/ilmy.jpg?v=2',
   gallery: [
-    './images/momen-1.jpg',
-    './images/momen-2.jpg',
-    './images/momen-3.jpg',
-    './images/momen-4.jpg'
+    './images/momen-1.jpg?v=2',
+    './images/momen-2.jpg?v=2',
+    './images/momen-3.jpg?v=2',
+    './images/momen-4.jpg?v=2'
   ]
 };
 
@@ -131,6 +134,17 @@ function handleGalleryUpload(event, index) {
 // Memuat foto dari LocalStorage saat halaman dibuka
 function loadSavedPhotos() {
   try {
+    // Jika versi foto terbaru sudah diterapkan, bersihkan cache localStorage versi lama
+    if (localStorage.getItem('duo_photo_version') !== PHOTO_VERSION) {
+      localStorage.removeItem('duo_photo_evina');
+      localStorage.removeItem('duo_photo_ilmy');
+      for (let i = 0; i < 4; i++) {
+        localStorage.removeItem('duo_gallery_' + i);
+      }
+      localStorage.setItem('duo_photo_version', PHOTO_VERSION);
+      return;
+    }
+
     const savedEvina = localStorage.getItem('duo_photo_evina');
     if (savedEvina) {
       const hEvina = document.getElementById('avatarEvina');
