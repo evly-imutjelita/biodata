@@ -1,41 +1,60 @@
 /* ===================================================
    STYLE.CSS - BIODATA KREATIF GREY & SOFT PURPLE
-   Glassmorphism, Ambient Orbs, & Halus Motion
+   Glassmorphism, Animated Gradient, Ambient Orbs
    =================================================== */
+
+/* Animated Grey & Soft Purple Background */
+.bg-grey-purple {
+  background: linear-gradient(135deg, #2b2d38 0%, #3e3b4f 28%, #57447a 62%, #3a3d4a 100%);
+  background-size: 300% 300%;
+  animation: gradientFlow 16s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 /* Ambient Glowing Orbs Background */
 .ambient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.35;
+  filter: blur(85px);
+  opacity: 0.5;
   pointer-events: none;
   animation: floatOrb 18s infinite ease-in-out alternate;
 }
 
 .orb-1 {
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, #b892ff 0%, #7c5cbf 60%, transparent 100%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #c4b5fd 0%, #8b5cf6 55%, transparent 100%);
   top: -10%;
-  left: 15%;
+  left: 10%;
   animation-duration: 22s;
 }
 
 .orb-2 {
-  width: 440px;
-  height: 440px;
-  background: radial-gradient(circle, #8b5cf6 0%, #4b5563 70%, transparent 100%);
-  top: 45%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, #a78bfa 0%, #6b7280 65%, transparent 100%);
+  top: 40%;
   right: -5%;
   animation-duration: 26s;
   animation-delay: -6s;
 }
 
 .orb-3 {
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, #a78bfa 0%, #374151 70%, transparent 100%);
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, #9ca3af 0%, #7c3aed 65%, transparent 100%);
   bottom: 5%;
   left: 5%;
   animation-duration: 20s;
@@ -56,13 +75,13 @@
 
 /* Glassmorphism Card Style */
 .glass-card {
-  background: rgba(23, 23, 34, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(196, 181, 253, 0.12);
+  background: rgba(24, 24, 36, 0.58);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(216, 180, 254, 0.22);
   border-radius: 1.5rem;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4), 
-              0 0 20px -3px rgba(184, 146, 255, 0.05);
+  box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.35), 
+              0 0 24px -3px rgba(184, 146, 255, 0.12);
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
               border-color 0.4s ease, 
               box-shadow 0.4s ease;
