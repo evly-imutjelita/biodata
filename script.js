@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Muat Foto yang Tersimpan di LocalStorage (jika ada)
   loadSavedPhotos();
 
+  // 2b. Muat jumlah Love Persahabatan
+  initLoveCounter();
+
   // 3. Inisialisasi Canvas Partikel Grey & Soft Purple
   initParticleCanvas();
 
@@ -325,7 +328,74 @@ window.addEventListener('keydown', (e) => {
 });
 
 /* ========================================================
-   PARTICLE CANVAS (Grey & Soft Purple Interactive Dust)
+   FRIENDSHIP LOVE COUNTER & COLOURFUL CONFETTI BURST
+   ======================================================== */
+const FRIENDSHIP_QUOTES = [
+  'Besties Forever! Evina & Ilmy kompak selalu! 💜✨',
+  'Semoga persahabatan kalian awet sampai tua nanti! 🌸💖',
+  'Duo PPLG SMKN 1 Banyusari paling seru! 🦋🎉',
+  'Jangan lupa traktir Seblak & Mie Ayam bareng ya! 🍲🍜',
+  'Energi positif & penuh warna buat kalian berdua! 🌈💫'
+];
+
+function initLoveCounter() {
+  const countEl = document.getElementById('loveCounterNum');
+  if (!countEl) return;
+  const savedCount = parseInt(localStorage.getItem('duo_love_count') || '18', 10);
+  countEl.textContent = savedCount;
+}
+
+function launchFriendshipConfetti(e) {
+  // Update counter
+  const countEl = document.getElementById('loveCounterNum');
+  let current = parseInt(localStorage.getItem('duo_love_count') || '18', 10);
+  current += 1;
+  localStorage.setItem('duo_love_count', current.toString());
+  if (countEl) countEl.textContent = current;
+
+  // Tentukan posisi awal burst (dari tombol yang diklik atau tengah atas)
+  let originX = window.innerWidth / 2;
+  let originY = window.innerHeight / 3;
+  if (e && e.clientX && e.clientY) {
+    originX = e.clientX;
+    originY = e.clientY;
+  }
+
+  const icons = ['💜', '💖', '✨', '🦋', '🌸', '🌈', '⭐', '🎉', '💫', '🍬'];
+  const pieceCount = 26;
+
+  for (let i = 0; i < pieceCount; i++) {
+    const el = document.createElement('span');
+    el.className = 'confetti-piece';
+    el.textContent = icons[Math.floor(Math.random() * icons.length)];
+    el.style.left = originX + 'px';
+    el.style.top = originY + 'px';
+    el.style.fontSize = (Math.random() * 14 + 14) + 'px';
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * 160 + 50;
+    const txMid = Math.cos(angle) * (distance * 0.6);
+    const tyMid = Math.sin(angle) * (distance * 0.6) - 60;
+    const txEnd = Math.cos(angle) * distance;
+    const tyEnd = Math.sin(angle) * distance + 180;
+
+    el.style.setProperty('--tx-mid', `${txMid}px`);
+    el.style.setProperty('--ty-mid', `${tyMid}px`);
+    el.style.setProperty('--tx-end', `${txEnd}px`);
+    el.style.setProperty('--ty-end', `${tyEnd}px`);
+    el.style.setProperty('--fall-duration', (Math.random() * 0.8 + 1.4) + 's');
+
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2400);
+  }
+
+  // Tampilkan pesan manis acak
+  const randomMsg = FRIENDSHIP_QUOTES[Math.floor(Math.random() * FRIENDSHIP_QUOTES.length)];
+  showToast(randomMsg);
+}
+
+/* ========================================================
+   PARTICLE CANVAS (Colourful Pastel + Grey & Soft Purple)
    ======================================================== */
 function initParticleCanvas() {
   const canvas = document.getElementById('particleCanvas');
@@ -336,13 +406,15 @@ function initParticleCanvas() {
   let height = (canvas.height = window.innerHeight);
 
   const particles = [];
-  const particleCount = window.innerWidth < 768 ? 32 : 65;
+  const particleCount = window.innerWidth < 768 ? 36 : 75;
 
   const colors = [
-    'rgba(184, 146, 255, 0.45)', // soft purple
-    'rgba(196, 181, 253, 0.35)', // lavender
-    'rgba(148, 163, 184, 0.30)', // slate/grey
-    'rgba(224, 216, 255, 0.40)'  // light soft purple
+    'rgba(244, 114, 182, 0.55)', // pastel pink
+    'rgba(192, 132, 252, 0.55)', // soft purple
+    'rgba(56, 189, 248, 0.50)',  // sky cyan
+    'rgba(52, 211, 153, 0.50)',  // mint emerald
+    'rgba(251, 191, 36, 0.45)',  // warm amber
+    'rgba(203, 213, 225, 0.40)'  // cool light grey
   ];
 
   class Particle {
