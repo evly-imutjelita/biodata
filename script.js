@@ -10,15 +10,15 @@
  * 6. Scroll Reveal Animation
  */
 
-// URL Default Foto Awal
+// URL Default Foto Asli
 const DEFAULT_PHOTOS = {
-  evina: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80',
-  ilmy: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80',
+  evina: './images/evina.jpg',
+  ilmy: './images/ilmy.jpg',
   gallery: [
-    'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=500&q=80',
-    'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=500&q=80',
-    'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=500&q=80',
-    'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=500&q=80'
+    './images/momen-1.jpg',
+    './images/momen-2.jpg',
+    './images/momen-3.jpg',
+    './images/momen-4.jpg'
   ]
 };
 
@@ -220,10 +220,10 @@ function openGalleryModal(index) {
   if (!galleryImg) return;
 
   const captions = [
-    'Momen Ceria Bersama Sahabat',
-    'Belajar & Bercanda di SMKN 1 Banyusari',
-    'Hangout & Berburu Kuliner Seru',
-    'Petualangan & Liburan Singkat'
+    'Mirror Selfie Bareng Sahabat ✨',
+    'Momen Ulang Tahun ke-18 yang Manis 🎂',
+    'Ketawa Lepas & Jalan Bareng 💕',
+    'Seragam PPLG SMKN 1 Banyusari 🏫'
   ];
 
   openPhotoModal(galleryImg.src, captions[index] || 'Momen Bersama');
